@@ -44,9 +44,13 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.reply.R
 import com.example.reply.data.Email
+import com.example.reply.data.MailboxType
 import com.example.reply.data.local.LocalAccountsDataProvider
+import com.example.reply.data.local.LocalAccountsDataProvider.defaultAccount
+import com.example.reply.data.local.LocalEmailsDataProvider.allEmails
 
 @Composable
 fun ReplyListOnlyContent(
@@ -245,4 +249,13 @@ private fun ReplyHomeTopBar(modifier: Modifier = Modifier) {
                 .size(dimensionResource(R.dimen.topbar_profile_image_size))
         )
     }
+}
+
+@Preview
+@Composable
+fun ReplyHomeContentPreview() {
+    ReplyEmailListItem(
+        email = com.example.reply.data.local.LocalEmailsDataProvider.get(2L)!!,
+        selected = true,
+        onCardClick = { /*TODO*/ })
 }

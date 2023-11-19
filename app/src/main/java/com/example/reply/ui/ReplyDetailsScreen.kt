@@ -43,6 +43,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.reply.R
 import com.example.reply.data.Email
 import com.example.reply.data.MailboxType
@@ -286,4 +287,34 @@ private fun ActionButton(
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun ReplyEmailDetailsCardPreview() {
+    ReplyEmailDetailsCard(
+        email = com.example.reply.data.local.LocalEmailsDataProvider.get(2L)!!,
+        mailboxType = MailboxType.Spam)
+}
+@Preview
+@Composable
+fun DetailsScreenButtonBarPreview() {
+    Column() {
+        DetailsScreenButtonBar(mailboxType = MailboxType.Spam, displayToast = {})
+        DetailsScreenButtonBar(mailboxType = MailboxType.Drafts, displayToast = {})
+        DetailsScreenButtonBar(mailboxType = MailboxType.Sent, displayToast = {})
+    }
+}
+@Preview
+@Composable
+fun DetailsScreenHeaderPreview() {
+    DetailsScreenHeader(email = com.example.reply.data.local.LocalEmailsDataProvider.get(2L)!!)
+}
+@Preview
+@Composable
+fun ActionButtonPreview() {
+    ActionButton(
+        text = stringResource(id = R.string.reply),
+        onButtonClicked = {  },
+    )
 }

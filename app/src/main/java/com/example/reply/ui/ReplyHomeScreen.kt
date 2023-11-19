@@ -46,6 +46,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.reply.R
 import com.example.reply.data.Email
 import com.example.reply.data.MailboxType
@@ -239,3 +240,101 @@ private data class NavigationItemContent(
     val icon: ImageVector,
     val text: String
 )
+
+@Preview
+@Composable
+fun ReplyNavigationRailPreview() {
+    val navigationItemContentList = listOf(
+        NavigationItemContent(
+            mailboxType = MailboxType.Inbox,
+            icon = Icons.Default.Inbox,
+            text = stringResource(id = R.string.tab_inbox)
+        ),
+        NavigationItemContent(
+            mailboxType = MailboxType.Sent,
+            icon = Icons.Default.Send,
+            text = stringResource(id = R.string.tab_sent)
+        ),
+        NavigationItemContent(
+            mailboxType = MailboxType.Drafts,
+            icon = Icons.Default.Drafts,
+            text = stringResource(id = R.string.tab_drafts)
+        ),
+        NavigationItemContent(
+            mailboxType = MailboxType.Spam,
+            icon = Icons.Default.Report,
+            text = stringResource(id = R.string.tab_spam)
+        )
+    )
+    ReplyNavigationRail(
+        currentTab = MailboxType.Sent,
+        onTabPressed = {},
+        navigationItemContentList = navigationItemContentList
+    )
+}
+@Preview
+@Composable
+fun ReplyBottomNavigationBarPreview() {
+    val navigationItemContentList = listOf(
+        NavigationItemContent(
+            mailboxType = MailboxType.Inbox,
+            icon = Icons.Default.Inbox,
+            text = stringResource(id = R.string.tab_inbox)
+        ),
+        NavigationItemContent(
+            mailboxType = MailboxType.Sent,
+            icon = Icons.Default.Send,
+            text = stringResource(id = R.string.tab_sent)
+        ),
+        NavigationItemContent(
+            mailboxType = MailboxType.Drafts,
+            icon = Icons.Default.Drafts,
+            text = stringResource(id = R.string.tab_drafts)
+        ),
+        NavigationItemContent(
+            mailboxType = MailboxType.Spam,
+            icon = Icons.Default.Report,
+            text = stringResource(id = R.string.tab_spam)
+        )
+    )
+    ReplyBottomNavigationBar(
+        currentTab = MailboxType.Inbox,
+        onTabPressed = {},
+        navigationItemContentList = navigationItemContentList)
+}
+@Preview
+@Composable
+fun NavigationDrawerContentPreview() {
+    val navigationItemContentList = listOf(
+        NavigationItemContent(
+            mailboxType = MailboxType.Inbox,
+            icon = Icons.Default.Inbox,
+            text = stringResource(id = R.string.tab_inbox)
+        ),
+        NavigationItemContent(
+            mailboxType = MailboxType.Sent,
+            icon = Icons.Default.Send,
+            text = stringResource(id = R.string.tab_sent)
+        ),
+        NavigationItemContent(
+            mailboxType = MailboxType.Drafts,
+            icon = Icons.Default.Drafts,
+            text = stringResource(id = R.string.tab_drafts)
+        ),
+        NavigationItemContent(
+            mailboxType = MailboxType.Spam,
+            icon = Icons.Default.Report,
+            text = stringResource(id = R.string.tab_spam)
+        )
+    )
+    NavigationDrawerContent(
+        selectedDestination = MailboxType.Inbox,
+        onTabPressed = {},
+        navigationItemContentList = navigationItemContentList
+    )
+}
+@Preview
+@Composable
+fun NavigationDrawerHeaderPreview() {
+    NavigationDrawerHeader(Modifier.fillMaxWidth())
+}
