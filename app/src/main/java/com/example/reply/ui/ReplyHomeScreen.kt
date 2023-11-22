@@ -94,6 +94,7 @@ fun ReplyHomeScreen(
     if(
         navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER
     ) {
+        val navigationDrawerContentDescription = stringResource(id = R.string.navigation_drawer)
         PermanentNavigationDrawer(
             drawerContent = {
                 PermanentDrawerSheet(Modifier.width(dimensionResource(id = R.dimen.drawer_width))) {
@@ -108,7 +109,9 @@ fun ReplyHomeScreen(
                             .padding(dimensionResource(id = R.dimen.drawer_padding_content))
                     )
                 }
-            }) {
+            },
+            modifier = Modifier.testTag(navigationDrawerContentDescription)
+        ) {
             ReplyAppContent(
                 navigationType = navigationType,
                 contentType = contentType,
@@ -196,6 +199,7 @@ private fun ReplyAppContent(
                     navigationItemContentList = navigationItemContentList,
                     modifier = Modifier
                         .fillMaxWidth()
+                        .testTag(bottomNavigationContentDescription)
                 )
             }
         }
