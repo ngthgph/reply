@@ -47,10 +47,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.reply.R
 import com.example.reply.data.Email
-import com.example.reply.data.MailboxType
 import com.example.reply.data.local.LocalAccountsDataProvider
-import com.example.reply.data.local.LocalAccountsDataProvider.defaultAccount
-import com.example.reply.data.local.LocalEmailsDataProvider.allEmails
 
 @Composable
 fun ReplyListOnlyContent(
@@ -117,7 +114,7 @@ fun ReplyListAndDetailContent(
         val activity = LocalContext.current as Activity
         ReplyDetailsScreen(
             replyUiState = replyUiState,
-            onBackPressed = {},
+            onBackPressed = { activity.finish() },
             modifier = Modifier.weight(1f)
         )
     }
