@@ -31,6 +31,7 @@ class ReplyAppTest {
     // private val thirdEmailSubject = composeTestRule.activity.getString(LocalEmailsDataProvider.allEmails[2].subject) // test running causes error
 
     @Test
+    @TestCompactWidth
     fun compactDevice_verifyUsingBottomNavigation() {
         composeTestRule.setContent {
             ReplyApp(windowSize = WindowWidthSizeClass.Compact)
@@ -38,6 +39,7 @@ class ReplyAppTest {
         composeTestRule.onNodeWithTagForStringId(R.string.navigation_bottom).assertExists()
     }
     @Test
+    @TestMediumWidth
     fun mediumDevice_verifyUsingNavigationRail() {
         composeTestRule.setContent {
             ReplyApp(windowSize = WindowWidthSizeClass.Medium)
@@ -45,6 +47,7 @@ class ReplyAppTest {
         composeTestRule.onNodeWithTagForStringId(R.string.navigation_rail).assertExists()
     }
     @Test
+    @TestExpandedWidth
     fun expandedDevice_verifyUsingNavigationDrawer() {
         composeTestRule.setContent {
             ReplyApp(windowSize = WindowWidthSizeClass.Expanded)
@@ -52,6 +55,7 @@ class ReplyAppTest {
         composeTestRule.onNodeWithTagForStringId(R.string.navigation_drawer).assertExists()
     }
     @Test
+    @TestCompactWidth
     fun compactDevice_selectedEmailRetained_AfterConfigChange() {
         // Setup compact window
         // val stateRestorationTester = StateRestorationTester(composeTestRule)
@@ -77,6 +81,7 @@ class ReplyAppTest {
     }
 
     @Test
+    @TestMediumWidth
     fun mediumDevice_selectedEmailRetained_afterConfigChange() {
         stateRestorationTester.setContent {
             ReplyApp(windowSize = WindowWidthSizeClass.Medium)
@@ -96,6 +101,7 @@ class ReplyAppTest {
     }
 
     @Test
+    @TestExpandedWidth
     fun expandedDevice_selectedEmailRetained_afterConfigChange() {
         stateRestorationTester.setContent {
             ReplyApp(windowSize = WindowWidthSizeClass.Expanded)
